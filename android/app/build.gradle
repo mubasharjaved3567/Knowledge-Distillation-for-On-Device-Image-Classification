@@ -1,0 +1,53 @@
+plugins {
+    id 'com.android.application'
+    id 'kotlin-android'
+}
+
+android {
+    compileSdk 34
+    namespace "com.kd.classifier"
+
+    defaultConfig {
+        applicationId "com.kd.classifier"
+        minSdk 24
+        targetSdk 34
+        versionCode 1
+        versionName "1.0"
+    }
+
+    splits {
+        abi {
+            enable true
+            reset()
+            include "arm64-v8a"
+            universalApk false
+        }
+    }
+
+    aaptOptions {
+        noCompress "ptl"
+    }
+    buildFeatures {
+        viewBinding true
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
+    packagingOptions {
+        exclude "lib/x86/*.so"
+        exclude "lib/x86_64/*.so"
+        exclude "lib/armeabi-v7a/*.so"
+    }
+}
+
+dependencies {
+    implementation 'org.pytorch:pytorch_android_lite:2.1.0'
+    implementation 'org.pytorch:pytorch_android_torchvision_lite:2.1.0'
+    implementation 'androidx.core:core-ktx:1.12.0'
+    implementation 'androidx.appcompat:appcompat:1.6.1'
+    implementation 'com.google.android.material:material:1.11.0'
+}
