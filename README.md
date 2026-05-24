@@ -11,7 +11,7 @@ A systematic study of knowledge distillation techniques to compress a large deep
 | Exp | Method | T | Alpha | Beta | Epochs | Accuracy | Gap |
 |-----|--------|---|-------|------|--------|----------|-----|
 | — | Teacher (ResNet-110) | — | — | — | 200 | **74.17%** | — |
-| — | Hard Labels (baseline) | — | — | — | 155 | 69.37% | −4.80% |
+| — | Hard Labels (baseline) | — | — | — | 200 | 69.37% | −4.80% |
 | 1 | Logit-KD | 2 | 0.9 | — | 200 | 70.78% | −3.39% |
 | 1 | Logit-KD | 4 | 0.9 | — | 200 | 71.21% | −2.96% |
 | 1 | Logit-KD | 8 | 0.9 | — | 200 | 70.78% | −3.39% |
@@ -138,7 +138,6 @@ python evaluate.py
 
 ### Step 5 — Generate plots
 ```bash
-python visualize_final.py --skip-slow   # skip t-SNE
 python visualize_final.py               # all 9 plots including t-SNE
 ```
 
